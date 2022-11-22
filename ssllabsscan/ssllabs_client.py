@@ -133,8 +133,8 @@ class SSLLabsClient():
                 summary = [
                     host,
                     ep["grade"],
-                    ep["hasWarnings"],
                     "No" if "httpForwarding"not in ep["details"] else ep["details"]["httpForwarding"],
+                    ep["hasWarnings"],
                     na,
                     CHAIN_ISSUES[str(ep["details"]["certChains"][0]["issues"])],
                     FORWARD_SECRECY[str(ep["details"]["forwardSecrecy"])],
