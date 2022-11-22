@@ -42,7 +42,7 @@ VULNERABLES = [
 ]
 
 SUMMARY_COL_NAMES = [
-    "Host", "Grade", "HasWarnings", "Cert Expiry", "Chain Status", "Forward Secrecy", "Heartbeat ext"
+    "Host", "Grade", "HttpForwarding", "HasWarnings", "Cert Expiry", "Chain Status", "Forward Secrecy", "Heartbeat ext"
 ] + VULNERABLES + RC4 + PROTOCOLS
 
 
@@ -134,6 +134,7 @@ class SSLLabsClient():
                     host,
                     ep["grade"],
                     ep["hasWarnings"],
+                    "No" if "httpForwarding"not in ep["details"] else ep["details"]["httpForwarding"],
                     na,
                     CHAIN_ISSUES[str(ep["details"]["certChains"][0]["issues"])],
                     FORWARD_SECRECY[str(ep["details"]["forwardSecrecy"])],
